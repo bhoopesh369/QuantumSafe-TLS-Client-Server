@@ -19,6 +19,9 @@
 
 // gcc -o server server.c -I/home/bhoopesh/OPENSSL_DIR/include/openssl -L/home/bhoopesh/OPENSSL_DIR -L/home/bhoopesh/OPENSSL_DIR/oqs/lib -lssl -lcrypto -loqs
 
+// gcc -o server server.c -I/usr/local/include/openssl -L/usr/local/lib -L/usr/local/lib -lssl -lcrypto -loqs
+
+
 int main() {
     SSL_CTX *ctx;
     SSL *ssl;
