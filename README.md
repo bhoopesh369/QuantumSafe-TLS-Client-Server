@@ -9,6 +9,14 @@ sudo apt install cmake gcc libtool libssl-dev make ninja-build git
 ```
 
 ```bash
+sudo apt-get install doxygen
+```
+
+```bash
+sudo apt-get install libclang1-15
+```
+
+```bash
 git clone --branch OQS-OpenSSL_1_1_1-stable https://github.com/open-quantum-safe/openssl.git OPENSSL_DIR
 ```
 
@@ -24,6 +32,8 @@ git clone --branch main https://github.com/open-quantum-safe/liboqs.git
 cd liboqs
 mkdir build && cd build
 ```
+
+### Replace /home/titan/OPENSSL_DIR/oqs with your own path
 
 ```bash
 cmake -GNinja -DCMAKE_INSTALL_PREFIX=/home/titan/OPENSSL_DIR/oqs -DOQS_USE_OPENSSL=OFF ..
@@ -69,6 +79,15 @@ make -j 2
 ```
 
 ```bash
-make install
+sudo make install
 ```
 
+### Now compile the c files by linking the binaries with appr flags
+
+```bash
+gcc -o server server.c -I/usr/local/include/openssl -L/usr/local/lib -L/usr/local/lib -lssl -lcrypto -loqs
+```
+
+```bash
+gcc -o client client.c -I/usr/local/include/openssl -L/usr/local/lib -L/usr/local/lib -lssl -lcrypto -loqs
+```
